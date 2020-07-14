@@ -26,32 +26,12 @@ namespace Client
 
         private void frmClient_Load(object sender, EventArgs e)
         {
-            comboBoxFill();
+            // maskedTextBoxIPAddress.Mask = @"###\.###\.###\.###";
         }
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
             Connection();
-        }
-
-        private void comboBoxFill()
-        {
-            //Aktif IP adresleri bulunup combobox a ekleniyor.ç
-            Dictionary<string, IPAddress> comboFill = new Dictionary<string, IPAddress>();
-            foreach (NetworkInterface NI in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                foreach (UnicastIPAddressInformation IP in NI.GetIPProperties().UnicastAddresses)
-                {
-                    if (IP.Address.AddressFamily == AddressFamily.InterNetwork)
-                    {
-                        comboFill.Add(IP.Address.ToString() + " - " + NI.Description, IP.Address);
-                    }
-                }
-            }
-
-            comboBoxActiveIPAdress.DataSource = new BindingSource(comboFill, null);
-            comboBoxActiveIPAdress.DisplayMember = "Key";
-            comboBoxActiveIPAdress.ValueMember = "Value";
         }
 
         /// <summary>
@@ -61,15 +41,14 @@ namespace Client
         {
             try
             {
-                string ipAddress = comboBoxActiveIPAdress.SelectedValue.ToString();
-                tcpClient = new TcpClient(ipAddress, Convert.ToInt32(txtPort.Text));
+                tcpClient = new TcpClient(maskedTextBoxIPAddress.Text, Convert.ToInt32(txtPort.Text));
                 thread = new Thread(new ThreadStart(StartRead));
                 thread.Start();
                 lblConnectionState.Text = DateTime.Now.ToString() + " Baglanti kuruldu...\n";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Server ile baglanti kurulurken hata olustu !");
+                lblConnectionState.Text = "Server ile baglanti kurulurken hata oluştu!";
             }
         }
 
