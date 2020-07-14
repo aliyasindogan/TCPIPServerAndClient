@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmServer));
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtGetMessage = new System.Windows.Forms.TextBox();
             this.txtSendMessage = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblConnectionState = new System.Windows.Forms.Label();
@@ -38,10 +38,11 @@
             this.btnStartServer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStopServer = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtGetMessage = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.btnStopServer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -64,15 +65,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Port";
             // 
-            // txtGetMessage
-            // 
-            this.txtGetMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGetMessage.Location = new System.Drawing.Point(3, 16);
-            this.txtGetMessage.Multiline = true;
-            this.txtGetMessage.Name = "txtGetMessage";
-            this.txtGetMessage.Size = new System.Drawing.Size(410, 148);
-            this.txtGetMessage.TabIndex = 3;
-            // 
             // txtSendMessage
             // 
             this.txtSendMessage.Location = new System.Drawing.Point(8, 19);
@@ -83,16 +75,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(80, 139);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(83, 139);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 2;
             this.label5.Text = "Connection:";
             // 
             // lblConnectionState
             // 
             this.lblConnectionState.AutoSize = true;
-            this.lblConnectionState.Location = new System.Drawing.Point(144, 140);
+            this.lblConnectionState.Location = new System.Drawing.Point(162, 139);
             this.lblConnectionState.Name = "lblConnectionState";
             this.lblConnectionState.Size = new System.Drawing.Size(10, 13);
             this.lblConnectionState.TabIndex = 2;
@@ -142,6 +135,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Server";
             // 
+            // btnStopServer
+            // 
+            this.btnStopServer.Location = new System.Drawing.Point(242, 105);
+            this.btnStopServer.Name = "btnStopServer";
+            this.btnStopServer.Size = new System.Drawing.Size(134, 23);
+            this.btnStopServer.TabIndex = 0;
+            this.btnStopServer.Text = "Stop Server";
+            this.btnStopServer.UseVisualStyleBackColor = true;
+            this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtGetMessage);
@@ -151,6 +154,15 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Get Message";
+            // 
+            // txtGetMessage
+            // 
+            this.txtGetMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGetMessage.Location = new System.Drawing.Point(3, 16);
+            this.txtGetMessage.Name = "txtGetMessage";
+            this.txtGetMessage.Size = new System.Drawing.Size(410, 148);
+            this.txtGetMessage.TabIndex = 0;
+            this.txtGetMessage.Text = "";
             // 
             // groupBox3
             // 
@@ -173,31 +185,23 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // btnStopServer
-            // 
-            this.btnStopServer.Location = new System.Drawing.Point(242, 105);
-            this.btnStopServer.Name = "btnStopServer";
-            this.btnStopServer.Size = new System.Drawing.Size(134, 23);
-            this.btnStopServer.TabIndex = 0;
-            this.btnStopServer.Text = "Stop Server";
-            this.btnStopServer.UseVisualStyleBackColor = true;
-            this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
-            // 
             // frmServer
             // 
+            this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 252);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmServer";
             this.Text = "Server";
             this.Load += new System.EventHandler(this.frmServer_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -207,7 +211,6 @@
         #endregion
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtGetMessage;
         private System.Windows.Forms.TextBox txtSendMessage;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblConnectionState;
@@ -219,6 +222,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnStopServer;
+        private System.Windows.Forms.RichTextBox txtGetMessage;
     }
 }
 

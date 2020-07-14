@@ -131,11 +131,18 @@ namespace Server
             }
             else
             {
-                streamWriter = new StreamWriter(networkStream);
-                streamWriter.WriteLine(txtSendMessage.Text);
-                streamWriter.Flush();
-                txtGetMessage.AppendText(txtSendMessage.Text + "\n");
-                txtSendMessage.Text = "";
+                if (networkStream != null)
+                {
+                    streamWriter = new StreamWriter(networkStream);
+                    streamWriter.WriteLine(txtSendMessage.Text);
+                    streamWriter.Flush();
+                    txtGetMessage.AppendText(txtSendMessage.Text + "\n");
+                    txtSendMessage.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Client ile bağlantı kurulmadı!");
+                }
             }
         }
 
