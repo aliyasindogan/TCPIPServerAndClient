@@ -1,14 +1,10 @@
-﻿using Entities.Concrete;
-using Entities.Concrete.Request;
+﻿using Entities.Concrete.Request;
 using Server.Helpers;
 using Services.Abstract;
 using Services.Concrete;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,6 +38,28 @@ namespace Server
             ControlHelpers.ComboBoxFill(comboBoxActiveIPAdress);
         }
 
+        #region Buttons
+
+        private async void btnSend_Click(object sender, EventArgs e)
+        {
+            bool result = await _serverService.SendMessageAsync(new SendMessageRequest { SendMessage = txtSendMessage.Text });
+            if (result)
+            {
+                txtGetMessage.AppendText(txtSendMessage.Text + "\n");
+                txtSendMessage.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Hata Oluştu!");
+            }
+        }
+
+        private void btnStopServer_Click(object sender, EventArgs e)
+        {
+            //Düzenleme yapılacak  16.07.2020 | Ali Yasin DOĞAN
+            // _serverService.StopServer();
+        }
+
         private void btnStartServer_Click(object sender, EventArgs e)
         {
             StartListeningRequest baseRequest = new StartListeningRequest()
@@ -70,24 +88,6 @@ namespace Server
             }));
         }
 
-        private async void btnSend_Click(object sender, EventArgs e)
-        {
-            bool result = await _serverService.SendMessageAsync(new SendMessageRequest { SendMessage = txtSendMessage.Text });
-            if (result)
-            {
-                txtGetMessage.AppendText(txtSendMessage.Text + "\n");
-                txtSendMessage.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Hata Oluştu!");
-            }
-        }
-
-        private void btnStopServer_Click(object sender, EventArgs e)
-        {
-            //Düzenleme yapılacak  16.07.2020 | Ali Yasin DOĞAN
-            // _serverService.StopServer();
-        }
+        #endregion Buttons
     }
 }
