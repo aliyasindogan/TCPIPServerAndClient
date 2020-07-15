@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class frmClient : Form
+    public partial class frmClient : XtraForm
     {
         private Thread thread;
         private TcpClient tcpClient;

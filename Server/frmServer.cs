@@ -1,18 +1,15 @@
-﻿using Entities.Concrete.Request;
+﻿using DevExpress.XtraEditors;
+using Entities.Concrete.Request;
 using Server.Helpers;
 using Services.Abstract;
 using Services.Concrete;
 using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Server
 {
-    public partial class frmServer : Form
+    public partial class frmServer : XtraForm
     {
         #region Services
 
