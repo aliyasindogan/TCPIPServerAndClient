@@ -17,7 +17,7 @@ namespace Services.Concrete
 
         public static event WriteOnScreenHandler WriteOnScreenEvent;
 
-        public async Task<bool> SendMessageAsync(SendMessageRequest sendMessage)
+        public async Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage)
 
         {
             try
@@ -33,7 +33,7 @@ namespace Services.Concrete
             }
         }
 
-        public bool StartListening(StartListeningRequest request)
+        public bool StartListening(ServerStartListeningRequest request)
         {
             try
             {

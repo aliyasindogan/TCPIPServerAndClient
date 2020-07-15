@@ -43,9 +43,9 @@
   <ItemGroup>
     <Compile Include="Concrete\MySocket.cs" />
     <Compile Include="Concrete\Request\BaseRequest.cs" />
-    <Compile Include="Concrete\Request\StartListeningRequest.cs" />
+    <Compile Include="Concrete\Request\ServerStartListeningRequest.cs" />
     <Compile Include="Concrete\Response\BaseResponse.cs" />
-    <Compile Include="Concrete\Request\SendMessageRequest.cs" />
+    <Compile Include="Concrete\Request\ServerSendMessageRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

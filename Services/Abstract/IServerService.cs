@@ -8,7 +8,7 @@ namespace Services.Abstract
         /// <summary>
         /// Dinlemeyi Başlat
         /// </summary>
-        bool StartListening(StartListeningRequest baseRequest);
+        bool StartListening(ServerStartListeningRequest baseRequest);
 
         /// <summary>
         /// Okumayı Başlat
@@ -20,7 +20,7 @@ namespace Services.Abstract
         /// </summary>
         /// <param name="sendMessage"></param>
         /// <returns></returns>
-        Task<bool> SendMessageAsync(SendMessageRequest sendMessage);
+        Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage);
 
         //Task<bool> StopServer();
     }

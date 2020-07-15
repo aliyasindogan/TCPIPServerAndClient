@@ -38,7 +38,7 @@ namespace Server
 
         private async void btnSend_Click(object sender, EventArgs e)
         {
-            bool result = await _serverService.SendMessageAsync(new SendMessageRequest { SendMessage = txtSendMessage.Text });
+            bool result = await _serverService.SendMessageAsync(new ServerSendMessageRequest { SendMessage = txtSendMessage.Text });
             if (result)
             {
                 txtGetMessage.AppendText(txtSendMessage.Text + "\n");
@@ -58,7 +58,7 @@ namespace Server
 
         private void btnStartServer_Click(object sender, EventArgs e)
         {
-            StartListeningRequest baseRequest = new StartListeningRequest()
+            ServerStartListeningRequest baseRequest = new ServerStartListeningRequest()
             {
                 IpAddress = comboBoxActiveIPAdress.SelectedValue.ToString(),
                 Port = Convert.ToInt32(txtPort.Text),
