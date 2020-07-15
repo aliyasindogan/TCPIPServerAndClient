@@ -20,6 +20,8 @@ namespace Server
 
         #endregion Services
 
+        #region frmServer
+
         public frmServer()
         {
             InitializeComponent();
@@ -29,6 +31,8 @@ namespace Server
         {
             ControlHelpers.ComboBoxFill(comboBoxActiveIPAdress);
         }
+
+        #endregion frmServer
 
         #region Buttons
 
