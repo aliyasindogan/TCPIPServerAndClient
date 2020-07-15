@@ -14,19 +14,11 @@ namespace Server
 {
     public partial class frmServer : Form
     {
+        #region Services
+
         private readonly IServerService _serverService = new ServerManager();
 
-        //Yine gerekli Siniflarin nesneleri tanimlaniyor
-        private Thread thread;
-
-        private IPAddress myIpAddress;
-        private TcpListener tcpListener;
-        private Socket socket;
-        private NetworkStream networkStream;
-        private StreamReader streamReader;
-        private StreamWriter streamWriter;
-
-        public delegate void textChange(string text);
+        #endregion Services
 
         public frmServer()
         {
