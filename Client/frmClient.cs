@@ -26,7 +26,6 @@ namespace Client
 
         private void frmClient_Load(object sender, EventArgs e)
         {
-            // maskedTextBoxIPAddress.Mask = @"###\.###\.###\.###";
         }
 
         private void btnConnection_Click(object sender, EventArgs e)

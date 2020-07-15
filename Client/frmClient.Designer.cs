@@ -81,6 +81,7 @@
             this.maskedTextBoxIPAddress.Name = "maskedTextBoxIPAddress";
             this.maskedTextBoxIPAddress.Size = new System.Drawing.Size(293, 20);
             this.maskedTextBoxIPAddress.TabIndex = 5;
+            this.maskedTextBoxIPAddress.Text = "192.168.2.71";
             // 
             // btnDisconnect
             // 
