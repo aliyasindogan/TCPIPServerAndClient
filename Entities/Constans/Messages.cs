@@ -1,0 +1,25 @@
+﻿namespace Entities.Constans
+{
+    public class Messages : IMessageEntity
+    {
+        /// <summary>
+        /// Bağlantı kuruldu.
+        /// </summary>
+        public const string ConnectionEstablished = "Connection established!... \n";
+
+        /// <summary>
+        /// Sunucuya bağlanırken hata oluştu
+        /// </summary>
+        public const string ErrorWhileConnectingToServer = "Error while connecting to server! \n";
+
+        /// <summary>
+        /// Hata Oluştu
+        /// </summary>
+        public const string AnErrorOccurred = "An error occurred! \n";
+
+        /// <summary>
+        /// Dinleme Başlatıldı
+        /// </summary>
+        public const string ListeningStarted = "Listening started!... \n";
+    }
+}
