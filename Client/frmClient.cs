@@ -1,107 +1,79 @@
-﻿using DevExpress.XtraEditors;
+﻿using Entities.Concrete.Request;
+using Entities.Constans;
+using Services.Abstract;
+using Services.Concrete;
 using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Client
 {
     public partial class frmClient : Form
     {
-        private Thread thread;
-        private TcpClient tcpClient;
-        private NetworkStream networkStream;
-        private StreamReader streamReader;
-        private StreamWriter streamWriter;
+        #region Services
 
-        public delegate void textChange(string text);
+        private IClientService _clientService = new ClientManager();
+
+        #endregion Services
+
+        #region frmClient
 
         public frmClient()
         {
             InitializeComponent();
         }
 
-        private void frmClient_Load(object sender, EventArgs e)
-        {
-        }
+        #endregion frmClient
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            Connection();
-        }
-
-        /// <summary>
-        /// Server'e Bağlan
-        /// </summary>
-        private void Connection()
-        {
             try
             {
-                tcpClient = new TcpClient(maskedTextBoxIPAddress.Text, Convert.ToInt32(txtPort.Text));
-                thread = new Thread(new ThreadStart(StartRead));
-                thread.Start();
-                lblConnectionState.Text = DateTime.Now.ToString() + " Baglanti kuruldu...\n";
+                BaseRequest baseRequest = new BaseRequest()
+                {
+                    IpAddress = maskedTextBoxIPAddress.Text,
+                    Port = Convert.ToInt32(txtPort.Text),
+                };
+                Task.Run(() =>
+                {
+                    _clientService.ConnectionAndStartReadyAsync(baseRequest);
+                    this.Invoke(new Action(() =>
+                    {
+                        lblConnectionState.Text = DateTime.Now.ToString() + " " + Messages.ConnectionEstablished;
+                    }));
+                });
+
+                ClientManager.WriteOnScreenEvent += ClientManager_WriteOnScreenEvent;
             }
             catch (Exception)
             {
-                lblConnectionState.Text = "Server ile baglanti kurulurken hata oluştu!";
+                lblConnectionState.Text = Messages.ErrorWhileConnectingToServer;
             }
         }
 
-        /// <summary>
-        /// Okmaya Başla
-        /// </summary>
-        private void StartRead()
+        private void ClientManager_WriteOnScreenEvent(string message)
         {
-            networkStream = tcpClient.GetStream();
-            streamReader = new StreamReader(networkStream);
-            while (true)
+            message = "Server: " + message;
+            this.Invoke(new Action(() =>
             {
-                try
-                {
-                    string yazi = streamReader.ReadLine();
-                    WriteOnScreen(yazi);
-                }
-                catch
-                {
-                    return;
-                }
-            }
+                txtGetMessage.AppendText(message + "\n");
+            }));
         }
 
-        /// <summary>
-        /// Ekrana Yaz
-        /// </summary>
-        /// <param name="s"></param>
-        private void WriteOnScreen(string s)
+        private async void btnSend_Click(object sender, EventArgs e)
         {
-            //Okunan Veri TextBox icine yaziliyor
-            if (this.InvokeRequired)
+            bool result = await _clientService.SendMessageAsync(new ClientSendMessageRequest { SendMessage = txtSendMessage.Text });
+            if (result)
             {
-                textChange degis = new textChange(WriteOnScreen);
-                this.Invoke(degis, s);
-            }
-            else
-            {
-                s = "Server: " + s;
-                txtGetMessage.AppendText(s + "\n");
-            }
-        }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            if (txtSendMessage.Text == "")
-            {
-                MessageBox.Show("Mesaj alanı boş!");
-            }
-            else
-            {
-                streamWriter = new StreamWriter(networkStream);
-                streamWriter.WriteLine(txtSendMessage.Text);
-                streamWriter.Flush();
                 txtGetMessage.AppendText(txtSendMessage.Text + "\n");
                 txtSendMessage.Text = "";
+            }
+            else
+            {
+                MessageBox.Show(Messages.AnErrorOccurred);
             }
         }
     }
