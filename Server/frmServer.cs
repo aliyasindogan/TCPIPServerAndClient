@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Server
 {
-    public partial class frmServer : XtraForm
+    public partial class frmServer : Form
     {
         #region Services
 

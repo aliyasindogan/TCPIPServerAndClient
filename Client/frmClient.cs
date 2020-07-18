@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class frmClient : XtraForm
+    public partial class frmClient : Form
     {
         private Thread thread;
         private TcpClient tcpClient;
