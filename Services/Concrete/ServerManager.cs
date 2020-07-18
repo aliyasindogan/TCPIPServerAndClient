@@ -49,7 +49,7 @@ namespace Services.Concrete
             }
         }
 
-        public async void StartReadAsync()
+        public async Task StartReadAsync()
         {
             mySocket.socket = await mySocket.tcpListener.AcceptSocketAsync();
             mySocket.networkStream = new NetworkStream(mySocket.socket);

@@ -13,7 +13,7 @@ namespace Services.Abstract
         /// <summary>
         /// Okumayı Başlat
         /// </summary>
-        void StartReadAsync();
+        Task StartReadAsync();
 
         /// <summary>
         /// Mesaj Gönder
@@ -22,6 +22,7 @@ namespace Services.Abstract
         /// <returns></returns>
         Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage);
 
+        //Sonra düzenlenecek
         //Task<bool> StopServer();
     }
 }
