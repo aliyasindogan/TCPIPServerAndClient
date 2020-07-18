@@ -22,7 +22,10 @@ namespace Services.Abstract
         /// <returns></returns>
         Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage);
 
-        //Sonra düzenlenecek
-        //Task<bool> StopServer();
+        /// <summary>
+        /// Server'ı Durdur
+        /// </summary>
+        /// <returns></returns>
+        bool StopServer();
     }
 }

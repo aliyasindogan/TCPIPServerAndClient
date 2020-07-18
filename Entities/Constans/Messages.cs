@@ -21,5 +21,15 @@
         /// Dinleme Başlatıldı
         /// </summary>
         public const string ListeningStarted = "Listening started!... \n";
+
+        /// <summary>
+        /// Server Durduruldu!
+        /// </summary>
+        public const string ServerStopped = "Server stopped! \n";
+
+        /// <summary>
+        /// Server Durduruldu!
+        /// </summary>
+        public const string ServerCouldNotBeStopped = "Sunucu durdurulamadı! \n";
     }
 }

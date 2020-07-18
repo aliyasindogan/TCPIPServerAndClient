@@ -78,8 +78,11 @@ namespace Server
 
         private void btnStopServer_Click(object sender, EventArgs e)
         {
-            //Düzenleme yapılacak  16.07.2020 | Ali Yasin DOĞAN
-            // _serverService.StopServer();
+            bool state = _serverService.StopServer();
+            if (state)
+                lblConnectionState.Text = Messages.ServerStopped;
+            else
+                lblConnectionState.Text = Messages.ServerCouldNotBeStopped;
         }
 
         #endregion Operations

@@ -64,26 +64,22 @@ namespace Services.Concrete
                 }
                 catch (Exception ex)
                 {
-                    WriteOnScreenEvent("Hata: " + ex.Message.ToString());
+                    WriteOnScreenEvent("Exception: " + ex.Message.ToString());
                 }
             }
         }
 
-        //public async Task<bool> StopServer()
-        //{
-        //    try
-        //    {
-        //        var task = Task.Run(() =>
-        //        {
-        //            networkStream.Close();
-        //            return true;
-        //        });
-        //        return await task;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool StopServer()
+        {
+            try
+            {
+                serverSocket.networkStream.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

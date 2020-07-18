@@ -103,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ayd.ico" />
-    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
