@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using Entities.Concrete.Request;
+using Entities.Constans;
 using Server.Helpers;
 using Services.Abstract;
 using Services.Concrete;
@@ -31,7 +32,7 @@ namespace Server
 
         #endregion frmServer
 
-        #region Buttons
+        #region Operations
 
         private async void btnSend_Click(object sender, EventArgs e)
         {
@@ -43,19 +44,13 @@ namespace Server
             }
             else
             {
-                MessageBox.Show("Hata Oluştu!");
+                MessageBox.Show(Messages.AnErrorOccurred);
             }
-        }
-
-        private void btnStopServer_Click(object sender, EventArgs e)
-        {
-            //Düzenleme yapılacak  16.07.2020 | Ali Yasin DOĞAN
-            // _serverService.StopServer();
         }
 
         private void btnStartServer_Click(object sender, EventArgs e)
         {
-            ServerStartListeningRequest baseRequest = new ServerStartListeningRequest()
+            BaseRequest baseRequest = new BaseRequest()
             {
                 IpAddress = comboBoxActiveIPAdress.SelectedValue.ToString(),
                 Port = Convert.ToInt32(txtPort.Text),
@@ -63,7 +58,7 @@ namespace Server
 
             if (_serverService.StartListening(baseRequest))
             {
-                lblConnectionState.Text = DateTime.Now.ToString() + " Dinleme baslatildi..\n";
+                lblConnectionState.Text = DateTime.Now.ToString() + " " + Messages.ListeningStarted;
                 Task.Run(() =>
                 {
                     _serverService.StartReadAsync();
@@ -81,6 +76,12 @@ namespace Server
             }));
         }
 
-        #endregion Buttons
+        private void btnStopServer_Click(object sender, EventArgs e)
+        {
+            //Düzenleme yapılacak  16.07.2020 | Ali Yasin DOĞAN
+            // _serverService.StopServer();
+        }
+
+        #endregion Operations
     }
 }
