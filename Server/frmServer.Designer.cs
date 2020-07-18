@@ -193,7 +193,7 @@
             this.groupBox4.Controls.Add(this.listBoxConnected);
             this.groupBox4.Location = new System.Drawing.Point(831, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(265, 230);
+            this.groupBox4.Size = new System.Drawing.Size(152, 230);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connected";
@@ -204,7 +204,7 @@
             this.listBoxConnected.FormattingEnabled = true;
             this.listBoxConnected.Location = new System.Drawing.Point(3, 16);
             this.listBoxConnected.Name = "listBoxConnected";
-            this.listBoxConnected.Size = new System.Drawing.Size(259, 211);
+            this.listBoxConnected.Size = new System.Drawing.Size(146, 211);
             this.listBoxConnected.TabIndex = 0;
             // 
             // frmServer
@@ -212,7 +212,7 @@
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 257);
+            this.ClientSize = new System.Drawing.Size(996, 257);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
