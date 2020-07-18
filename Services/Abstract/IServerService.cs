@@ -8,7 +8,7 @@ namespace Services.Abstract
         /// <summary>
         /// Dinlemeyi Başlat
         /// </summary>
-        bool StartListening(ServerStartListeningRequest baseRequest);
+        bool StartListening(BaseRequest baseRequest);
 
         /// <summary>
         /// Okumayı Başlat

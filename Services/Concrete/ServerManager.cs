@@ -11,20 +11,19 @@ namespace Services.Concrete
 {
     public class ServerManager : IServerService
     {
-        private MySocket mySocket = new MySocket();
+        private MySocket serverSocket = new MySocket();
 
         public delegate void WriteOnScreenHandler(string message);
 
         public static event WriteOnScreenHandler WriteOnScreenEvent;
 
         public async Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage)
-
         {
             try
             {
-                mySocket.streamWriter = new StreamWriter(mySocket.networkStream);
-                await mySocket.streamWriter.WriteLineAsync(sendMessage.SendMessage);
-                await mySocket.streamWriter.FlushAsync();
+                serverSocket.streamWriter = new StreamWriter(serverSocket.networkStream);
+                await serverSocket.streamWriter.WriteLineAsync(sendMessage.SendMessage);
+                await serverSocket.streamWriter.FlushAsync();
                 return true;
             }
             catch (Exception)
@@ -33,14 +32,14 @@ namespace Services.Concrete
             }
         }
 
-        public bool StartListening(ServerStartListeningRequest request)
+        public bool StartListening(BaseRequest request)
         {
             try
             {
                 string ipAddress = request.IpAddress;
                 IPAddress myIpAddress = IPAddress.Parse(ipAddress);
-                mySocket.tcpListener = new TcpListener(myIpAddress, request.Port);
-                mySocket.tcpListener.Start();
+                serverSocket.tcpListener = new TcpListener(myIpAddress, request.Port);
+                serverSocket.tcpListener.Start();
                 return true;
             }
             catch (Exception)
@@ -51,16 +50,16 @@ namespace Services.Concrete
 
         public async Task StartReadAsync()
         {
-            mySocket.socket = await mySocket.tcpListener.AcceptSocketAsync();
-            mySocket.networkStream = new NetworkStream(mySocket.socket);
-            mySocket.streamReader = new StreamReader(mySocket.networkStream);
+            serverSocket.socket = await serverSocket.tcpListener.AcceptSocketAsync();
+            serverSocket.networkStream = new NetworkStream(serverSocket.socket);
+            serverSocket.streamReader = new StreamReader(serverSocket.networkStream);
             while (true)
             {
                 try
                 {
                     string client = "Cilent: ";
                     string text = client;
-                    text = await mySocket.streamReader.ReadLineAsync();
+                    text = await serverSocket.streamReader.ReadLineAsync();
                     WriteOnScreenEvent(text);
                 }
                 catch (Exception ex)
