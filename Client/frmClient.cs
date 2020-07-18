@@ -1,8 +1,10 @@
-﻿using Entities.Concrete.Request;
+﻿using Client.Models;
+using Entities.Concrete.Request;
 using Entities.Constans;
 using Services.Abstract;
 using Services.Concrete;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
@@ -26,6 +28,11 @@ namespace Client
             InitializeComponent();
         }
 
+        private void frmClient_Load(object sender, EventArgs e)
+        {
+            this.Text = "Client: " + LoginViewModel.UserName;
+        }
+
         #endregion frmClient
 
         private void btnConnection_Click(object sender, EventArgs e)
@@ -43,6 +50,10 @@ namespace Client
                     this.Invoke(new Action(() =>
                     {
                         lblConnectionState.Text = DateTime.Now.ToString() + " " + Messages.ConnectionEstablished;
+                        btnConnection.BackColor = Color.GreenYellow;
+                        txtPort.Enabled = false;
+                        maskedTextBoxIPAddress.Enabled = false;
+                        ConnnectionControl();
                     }));
                 });
 
@@ -65,7 +76,12 @@ namespace Client
 
         private async void btnSend_Click(object sender, EventArgs e)
         {
-            bool result = await _clientService.SendMessageAsync(new ClientSendMessageRequest { SendMessage = txtSendMessage.Text });
+            bool result = await _clientService.SendMessageAsync(new ClientSendMessageRequest
+            {
+                UserName = LoginViewModel.UserName,
+                SendMessage = txtSendMessage.Text
+            });
+
             if (result)
             {
                 txtGetMessage.AppendText(txtSendMessage.Text + "\n");
@@ -75,6 +91,15 @@ namespace Client
             {
                 MessageBox.Show(Messages.AnErrorOccurred);
             }
+        }
+
+        private async void ConnnectionControl()
+        {
+            bool result = await _clientService.SendMessageAsync(new ClientSendMessageRequest
+            {
+                UserName = LoginViewModel.UserName,
+                SendMessage = Messages.FirstConnection
+            });
         }
     }
 }

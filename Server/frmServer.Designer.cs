@@ -43,9 +43,12 @@
             this.txtGetMessage = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBoxConnected = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtPort
@@ -185,14 +188,34 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listBoxConnected);
+            this.groupBox4.Location = new System.Drawing.Point(831, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(265, 230);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Connected";
+            // 
+            // listBoxConnected
+            // 
+            this.listBoxConnected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxConnected.FormattingEnabled = true;
+            this.listBoxConnected.Location = new System.Drawing.Point(3, 16);
+            this.listBoxConnected.Name = "listBoxConnected";
+            this.listBoxConnected.Size = new System.Drawing.Size(259, 211);
+            this.listBoxConnected.TabIndex = 0;
+            // 
             // frmServer
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 252);
+            this.ClientSize = new System.Drawing.Size(1108, 257);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -204,6 +227,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,6 +247,8 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnStopServer;
         private System.Windows.Forms.RichTextBox txtGetMessage;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListBox listBoxConnected;
     }
 }
 

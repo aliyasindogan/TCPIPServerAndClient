@@ -4,14 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDB52880-DC3B-417E-9653-384B361BF76F}</ProjectGuid>
+    <ProjectGuid>{1DD12322-D90B-4FEA-99BC-5B4B50EF5CD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,20 +50,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Enum\UserTypes.cs" />
-    <Compile Include="Abstract\IEntity.cs" />
-    <Compile Include="Concrete\BaseEntities\BaseEntity.cs" />
-    <Compile Include="Concrete\Entity\User.cs" />
-    <Compile Include="Concrete\MySocket.cs" />
-    <Compile Include="Concrete\Request\BaseRequest.cs" />
-    <Compile Include="Concrete\Request\ClientSendMessageRequest.cs" />
-    <Compile Include="Concrete\Response\BaseResponse.cs" />
-    <Compile Include="Concrete\Request\ServerSendMessageRequest.cs" />
-    <Compile Include="Concrete\Entity\UserType.cs" />
-    <Compile Include="Constans\IMessageEntity.cs" />
-    <Compile Include="Constans\Messages.cs" />
+    <Compile Include="ChatDbContext.cs" />
+    <Compile Include="Migrations\202007181633041_Bismillah.cs" />
+    <Compile Include="Migrations\202007181633041_Bismillah.Designer.cs">
+      <DependentUpon>202007181633041_Bismillah.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{bdb52880-dc3b-417e-9653-384b361bf76f}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007181633041_Bismillah.resx">
+      <DependentUpon>202007181633041_Bismillah.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

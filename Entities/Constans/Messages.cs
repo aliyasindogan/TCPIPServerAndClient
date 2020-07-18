@@ -30,6 +30,11 @@
         /// <summary>
         /// Server Durduruldu!
         /// </summary>
-        public const string ServerCouldNotBeStopped = "Sunucu durdurulamadı! \n";
+        public const string ServerCouldNotBeStopped = "Server could not be stopped! \n";
+
+        /// <summary>
+        /// İlk Bağlantı
+        /// </summary>
+        public static string FirstConnection = "First connection!";
     }
 }

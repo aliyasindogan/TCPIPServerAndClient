@@ -1,8 +1,10 @@
 ﻿using Entities.Concrete;
 using Entities.Concrete.Request;
+using Entities.Constans;
 using Services.Abstract;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -16,6 +18,10 @@ namespace Services.Concrete
         public delegate void WriteOnScreenHandler(string message);
 
         public static event WriteOnScreenHandler WriteOnScreenEvent;
+
+        public delegate void FirstConnectionHandler(string message);
+
+        public static event FirstConnectionHandler FirstConnectionEvent;
 
         public async Task<bool> SendMessageAsync(ServerSendMessageRequest sendMessage)
         {
@@ -60,7 +66,14 @@ namespace Services.Concrete
                     string client = "Cilent: ";
                     string text = client;
                     text = await serverSocket.streamReader.ReadLineAsync();
-                    WriteOnScreenEvent(text);
+                    string newText = text.Split(':').Last().Trim();
+                    if (newText != Messages.FirstConnection)
+                    { WriteOnScreenEvent(text); }
+                    else
+                    {
+                        var firstText = text.Split(':').First().Trim();
+                        FirstConnectionEvent(firstText);
+                    }
                 }
                 catch (Exception ex)
                 {

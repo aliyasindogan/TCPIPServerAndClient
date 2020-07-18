@@ -32,7 +32,7 @@ namespace Services.Concrete
                 }
                 catch (Exception ex)
                 {
-                    WriteOnScreenEvent("Hata: " + ex.Message.ToString());
+                    WriteOnScreenEvent("Exception: " + ex.Message.ToString());
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace Services.Concrete
             try
             {
                 clientSocket.streamWriter = new StreamWriter(clientSocket.networkStream);
-                await clientSocket.streamWriter.WriteLineAsync(sendMessage.SendMessage);
+                await clientSocket.streamWriter.WriteLineAsync(sendMessage.UserName + ": " + sendMessage.SendMessage);
                 await clientSocket.streamWriter.FlushAsync();
                 return true;
             }
