@@ -89,7 +89,7 @@ namespace Services.Concrete
                 serverSocket.networkStream.Close();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

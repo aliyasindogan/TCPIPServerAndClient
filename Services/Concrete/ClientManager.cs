@@ -51,5 +51,13 @@ namespace Services.Concrete
                 return false;
             }
         }
+
+        public void Disconnect()
+        {
+            clientSocket.tcpClient.GetStream().Close();
+            clientSocket.tcpClient.Close();
+            clientSocket.tcpClient = null;
+            // clientSocket.tcpClient.Client.Disconnect(true);
+        }
     }
 }

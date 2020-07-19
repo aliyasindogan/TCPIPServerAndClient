@@ -51,6 +51,7 @@ namespace Client
                     {
                         lblConnectionState.Text = DateTime.Now.ToString() + " " + Messages.ConnectionEstablished;
                         btnConnection.BackColor = Color.GreenYellow;
+                        btnDisconnect.BackColor = default(Color);/* SystemColors.Control;*/
                         txtPort.Enabled = false;
                         maskedTextBoxIPAddress.Enabled = false;
                         ConnnectionControl();
@@ -70,7 +71,10 @@ namespace Client
             message = "Server: " + message;
             this.Invoke(new Action(() =>
             {
-                txtGetMessage.AppendText(message + "\n");
+                if (!message.Contains("Exception"))
+                {
+                    txtGetMessage.AppendText(message + "\n");
+                }
             }));
         }
 
@@ -99,6 +103,21 @@ namespace Client
             {
                 UserName = LoginViewModel.UserName,
                 SendMessage = Messages.FirstConnection
+            });
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                _clientService.Disconnect();
+                this.Invoke(new Action(() =>
+                {
+                    btnDisconnect.BackColor = Color.Red;
+                    btnConnection.BackColor = default(Color);
+
+                    lblConnectionState.Text = Messages.Disconnection;
+                }));
             });
         }
     }

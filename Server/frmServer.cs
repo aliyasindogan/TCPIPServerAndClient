@@ -88,7 +88,10 @@ namespace Server
         {
             this.Invoke(new Action(() =>
             {
-                txtGetMessage.AppendText(message + "\n");
+                if (!message.Contains("Exception"))
+                {
+                    txtGetMessage.AppendText(message + "\n");
+                }
             }));
         }
 

@@ -45,12 +45,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtUserName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(35, 15);
+            this.groupBox1.Location = new System.Drawing.Point(34, 52);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(244, 152);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login";
+            this.groupBox1.Text = "Giriş";
             // 
             // btnLogin
             // 
@@ -58,7 +58,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(161, 23);
             this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.Text = "Giriş";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -75,9 +75,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(41, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Password";
+            this.label2.Text = "Şifre";
             // 
             // txtUserName
             // 
@@ -92,21 +92,21 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(41, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "User Name";
+            this.label1.Text = "Kullanıcı Adı";
             // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 190);
+            this.ClientSize = new System.Drawing.Size(324, 261);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
-            this.Text = "Client Login";
+            this.Text = "Client Giriş Formu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

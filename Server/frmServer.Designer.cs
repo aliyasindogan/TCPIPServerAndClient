@@ -108,7 +108,7 @@
             this.btnStartServer.Name = "btnStartServer";
             this.btnStartServer.Size = new System.Drawing.Size(134, 23);
             this.btnStartServer.TabIndex = 0;
-            this.btnStartServer.Text = "Start Server";
+            this.btnStartServer.Text = "Server Başlat";
             this.btnStartServer.UseVisualStyleBackColor = true;
             this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
             // 
@@ -136,7 +136,7 @@
             this.groupBox1.Size = new System.Drawing.Size(390, 167);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Server";
+            this.groupBox1.Text = "Server Bağlantı Ayarları";
             // 
             // btnStopServer
             // 
@@ -144,7 +144,7 @@
             this.btnStopServer.Name = "btnStopServer";
             this.btnStopServer.Size = new System.Drawing.Size(134, 23);
             this.btnStopServer.TabIndex = 0;
-            this.btnStopServer.Text = "Stop Server";
+            this.btnStopServer.Text = "Server Durdur";
             this.btnStopServer.UseVisualStyleBackColor = true;
             this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
             // 
@@ -156,7 +156,7 @@
             this.groupBox2.Size = new System.Drawing.Size(416, 167);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Get Message";
+            this.groupBox2.Text = "Gelen Mesaj";
             // 
             // txtGetMessage
             // 
@@ -176,7 +176,7 @@
             this.groupBox3.Size = new System.Drawing.Size(812, 47);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Send Message";
+            this.groupBox3.Text = "Mesaj Gönder";
             // 
             // btnSend
             // 
@@ -184,7 +184,7 @@
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(68, 23);
             this.btnSend.TabIndex = 8;
-            this.btnSend.Text = "Send";
+            this.btnSend.Text = "Gönder";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -196,7 +196,7 @@
             this.groupBox4.Size = new System.Drawing.Size(152, 230);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Connected";
+            this.groupBox4.Text = "Bağlı Olanlar";
             // 
             // listBoxConnected
             // 
@@ -212,7 +212,7 @@
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 257);
+            this.ClientSize = new System.Drawing.Size(999, 261);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
@@ -220,7 +220,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmServer";
-            this.Text = "Server";
+            this.Text = "Server Mesaj Formu";
             this.Load += new System.EventHandler(this.frmServer_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

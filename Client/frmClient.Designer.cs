@@ -54,7 +54,7 @@
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(132, 23);
             this.btnConnection.TabIndex = 4;
-            this.btnConnection.Text = "Connection";
+            this.btnConnection.Text = "Bağlan";
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnConnection_Click);
             // 
@@ -73,7 +73,7 @@
             this.groupBox1.Size = new System.Drawing.Size(390, 167);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection";
+            this.groupBox1.Text = "Client Bağlantı Ayarları";
             // 
             // maskedTextBoxIPAddress
             // 
@@ -89,8 +89,9 @@
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(134, 23);
             this.btnDisconnect.TabIndex = 0;
-            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.Text = "Bağlantıyı Durdur";
             this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // txtPort
             // 
@@ -113,11 +114,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(83, 139);
+            this.label6.Location = new System.Drawing.Point(9, 139);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 13);
+            this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Connection:";
+            this.label6.Text = "Bağlantı Durumu:";
             // 
             // label7
             // 
@@ -131,7 +132,7 @@
             // lblConnectionState
             // 
             this.lblConnectionState.AutoSize = true;
-            this.lblConnectionState.Location = new System.Drawing.Point(156, 139);
+            this.lblConnectionState.Location = new System.Drawing.Point(119, 140);
             this.lblConnectionState.Name = "lblConnectionState";
             this.lblConnectionState.Size = new System.Drawing.Size(10, 13);
             this.lblConnectionState.TabIndex = 2;
@@ -146,7 +147,7 @@
             this.groupBox3.Size = new System.Drawing.Size(812, 47);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Send Message";
+            this.groupBox3.Text = "Mesaj Gönder";
             // 
             // btnSend
             // 
@@ -154,7 +155,7 @@
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(68, 23);
             this.btnSend.TabIndex = 8;
-            this.btnSend.Text = "Send";
+            this.btnSend.Text = "Gönder";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -173,7 +174,7 @@
             this.groupBox2.Size = new System.Drawing.Size(416, 167);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Get Message";
+            this.groupBox2.Text = "Gelen Mesaj";
             // 
             // txtGetMessage
             // 
@@ -196,7 +197,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClient";
-            this.Text = "Client";
+            this.Text = "Client Mesaj Formu";
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

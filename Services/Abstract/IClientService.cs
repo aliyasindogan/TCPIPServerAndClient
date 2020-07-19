@@ -18,5 +18,7 @@ namespace Services.Abstract
         /// <param name="sendMessage"></param>
         /// <returns></returns>
         Task<bool> SendMessageAsync(ClientSendMessageRequest sendMessage);
+
+        void Disconnect();
     }
 }
